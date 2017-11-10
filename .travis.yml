@@ -11,3 +11,13 @@ matrix:
 
 script:
   - ./gradlew --no-daemon --info build run
+
+deploy:
+  provider: releases
+  api_key:
+    secure: i0eHy2xhVgC34izkbBIu+cHRg3hgzGgM4KdckdIOcTmCrJsqXiW+LHqlP35iYJIVM4maETh7zrbnTLXMqQmstnVgocaDSRYJsgjHI2/rUkM2EFmNMTz5KGknIVvzMlhZfxO7iHXjeWQZ7mgXL0Ysij7WtZpDir34Xllr3FvDc0YrJE74SazMzU3pzQ/xiitvsBgmB7zoO2oZ/ivgjoGObPf5v1HPEzveG6G8lUYlJJF5u2C3Njkz6N3gaVKLaKfEi77+ss7N6M29dnbstC+3Xa5AUj9Fwix7/1/DsnqinmsDyedlATYA5dY0HtfJ6LpDn82dmyfxHtEMz6/yrCNmxLu83X0ogRpTKgiz8Ee7tLaioQJLzFXLF/QjoNNHopzUI5IZHk2YCa/9FKW8S3jwtE47+bm1uI4WmRVhvsIJUl+kPu4nafHQz4wymmE89pUFnffrgQRWqRGYmHjF1vBpOA8a1qAgofbkPA8q7tUHbnjwTmJF2Fiu8F/wte2Pew6amook082bp9utAGhJuZWBipXipdOZd38/8v5Odyw4zqGTfH7LUUoOjD5zzwrvQDK6IFiddFzKZWVrY+94aKf/Jkn+s8zXlaER8dE8Cc2P8g4PEdGSnonEuAMkj5e0P/uBS59K3caBpHePgtBljxr7z2frmL3XNJ983BA8IsYlil8=
+  file: build/konan/bin/**/Hello-*.kexe
+  file_glob: true
+  skip_cleanup: true
+  on:
+    tags: true
