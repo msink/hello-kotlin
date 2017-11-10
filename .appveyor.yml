@@ -7,7 +7,7 @@ build_script:
   - gradlew --no-daemon --info build run
 
 artifacts:
-  - path: build\konan\bin\mingw\Hello.exe
+  - path: build\konan\bin\mingw\Hello-windows.exe
     name: build
 
 deploy:

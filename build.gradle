@@ -1,7 +1,17 @@
 apply plugin: 'konan'
 
 konanArtifacts {
-    program('Hello')
+    program('Hello') {
+        target('linux') {
+            artifactName 'Hello-linux'
+        }
+        target('macbook') {
+            artifactName 'Hello-macos'
+        }
+        target('mingw') {
+            artifactName 'Hello-windows'
+        }
+    }
 }
 
 buildscript {
