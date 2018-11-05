@@ -7,3 +7,8 @@
 - windows-x64 (appveyor)
 - linux-x64 (travis)
 - macos-x64 (travis)
+
+Use the following Gradle commands
+* to build: `./gradlew assemble`
+* to test: `./gradlew check`
+* to run:  `./gradlew runProgram`

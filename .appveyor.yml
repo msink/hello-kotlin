@@ -5,9 +5,10 @@ environment:
 
 build_script:
   - gradlew --no-daemon --info build run
+  - pushd build\bin && 7z a hello-windows.zip hello && popd
 
 artifacts:
-  - path: build\konan\bin\mingw_x64\Hello-windows.exe
+  - path: build\bin\hello-windows.zip
     name: build
 
 deploy:
