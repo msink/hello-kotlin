@@ -9,12 +9,12 @@ repositories {
 final def os = org.gradle.internal.os.OperatingSystem.current()
 
 kotlin {
-    final def hostPreset = os.isWindows() ? presets.mingwX64
-                         : os.isLinux()   ? presets.linuxX64
-                         : os.isMacOsX()  ? presets.macosX64
-                         : /* ??? */ null
+    final def nativePreset = os.isWindows() ? presets.mingwX64
+                           : os.isLinux()   ? presets.linuxX64
+                           : os.isMacOsX()  ? presets.macosX64
+                           : /*unknown host*/ null
     targets {
-        fromPreset(hostPreset, 'hello') {
+        fromPreset(nativePreset, 'native') {
             compilations.main {
                 outputKinds 'EXECUTABLE'
                 entryPoint 'sample.hello.main'
@@ -25,10 +25,10 @@ kotlin {
 
 task runProgram {
     def buildType = 'DEBUG' // 'RELEASE'
-    dependsOn kotlin.targets.hello.compilations.main.linkTaskName('EXECUTABLE', buildType)
+    dependsOn kotlin.targets.native.compilations.main.linkTaskName('EXECUTABLE', buildType)
     doLast {
         exec {
-            executable kotlin.targets.hello.compilations.main.getBinary('EXECUTABLE', buildType)
+            executable kotlin.targets.native.compilations.main.getBinary('EXECUTABLE', buildType)
         }
     }
 }
